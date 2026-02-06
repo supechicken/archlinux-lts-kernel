@@ -238,6 +238,7 @@ _package-headers() {
     Zlib
   )
   depends=(pahole)
+  provides=(LINUX-HEADERS)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"

@@ -132,6 +132,7 @@ pkgname = linux-lts-headers
 	license = MIT
 	license = Zlib
 	depends = pahole
+	provides = LINUX-HEADERS
 
 pkgname = linux-lts-docs
 	pkgdesc = Documentation for the LTS Linux kernel
