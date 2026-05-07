@@ -1,8 +1,8 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts
-pkgver=6.18.26
-pkgrel=2
+pkgver=6.18.27
+pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
 arch=(x86_64)
@@ -45,18 +45,18 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('53772f5d3776e043767c8d81a32240d1f3eb64e822a5d7a510b55ca40707b0ec'
+sha256sums=('25017b93946f0ba2cbf71910b59640a29d9167a5b65ccd41b12cd991875ce2ea'
             'SKIP'
             'e5bda61fa4405571a0267cd8812329bb8a432a37efb50459461628d371849906'
             'c31b8c0ace123f5c1a0012a1254272eea9ac9cdd0d3e5d538ca6b11830dd01b0'
             '0f482368b62c3cece941e2d3ba497bf322db59315df5c2f72500fc1318e4768e'
-            '767b032da07c42150e9279ffbc72d12a76f249210c61a1c40bf586742c26a5cf')
-b2sums=('fbd4c50e480176135a81dfffa94e7bbb3b5bafa91555c5c6201c9f1d0c883a5fbe0c2cc60b9ae14f722946ff2559a1f4dc8015e2e217cb9c161c5f46860594dd'
+            '32d7f7387f6d200101b8454ac87d6fbcfa95751f9ed2eb9ce3617629b71fec55')
+b2sums=('89aad6fdf579a231533650b5a6d2c670b24bf41bb24dd7be6fd8bc726ea6d3f40deefdbbe00f8646c9e88aa8db6d86937e3c90d28bf7ffac5c22c3c3518fbe10'
         'SKIP'
         '5b3597cab8b174ff41b3f17aae6d1376a155356f781542e2e176d66c5a6dee53f7a1db8e2b9540ce8246efac4e27476c882fc8cc8063f0f514ae09230b5aef0a'
         'a71f78bea42d158fc9383f2bbb985dafa71274d2032876b67f84602c8085b1c53f3d36965e54e5fdbab5c0d7537c98d917bd7743d3cf373c1dcb6da3bc19f4e7'
         'c9d4ec8fac86a9b6f0567c57f6d5be04d56f8efbc9dc1b183981dad38387d750b53c17fcdd295cb68a874bf50f81d117cfe94bd3a8d9e08e1918644ae8daa3e5'
-        '88ee43de66224c7bf025d3ea3de6616413ee4ff4edf27e3038b048b29cab567fb8bcba4d8dd349bee931c36c51aa6e058888294d6d200f8af818b1c9603c2548')
+        '36f456c36c9b6ad31af26f131340bbf36f95229d0d63a0c54f4de4ad90bab60543e0f3ee77e2bfcc0473e31b921df86ac9b09ff7ae252d40f8985f2d1fa49f1b')
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
