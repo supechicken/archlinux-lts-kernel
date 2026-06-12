@@ -38,6 +38,7 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-drm-amdgpu-avoid-memory-allocation-in-the-critical-code-path-v3.patch
   0003-drm-amdgpu-use-GFP_ATOMIC-instead-of-NOWAIT-in-the-critical-path.patch
+  0004-tcp_bbr-v3-update-TCP-bbr-congestion-control-module-.patch
   config  # the main kernel config file
 )
 validpgpkeys=(
@@ -50,15 +51,17 @@ sha256sums=('a83cd200e6646db52866b8309e9137b9e9048b613cbda10ced2b811aae125255'
             'e5bda61fa4405571a0267cd8812329bb8a432a37efb50459461628d371849906'
             'c31b8c0ace123f5c1a0012a1254272eea9ac9cdd0d3e5d538ca6b11830dd01b0'
             '0f482368b62c3cece941e2d3ba497bf322db59315df5c2f72500fc1318e4768e'
-            '39fd45b29176d8158d8fd4dc41f553c0bb3f4ce14072f75786583db57741dca9')
+            'SKIP'
+            'SKIP')
 b2sums=('70ecccd0199404a1190a8a5698bc84234681d8399084d2aa457d327a2849d03883659da85014fd5f593670ff6a6ac47ba6cb84bab74ba47de5b3fe28ced97b4a'
         'SKIP'
         '5b3597cab8b174ff41b3f17aae6d1376a155356f781542e2e176d66c5a6dee53f7a1db8e2b9540ce8246efac4e27476c882fc8cc8063f0f514ae09230b5aef0a'
         'a71f78bea42d158fc9383f2bbb985dafa71274d2032876b67f84602c8085b1c53f3d36965e54e5fdbab5c0d7537c98d917bd7743d3cf373c1dcb6da3bc19f4e7'
         'c9d4ec8fac86a9b6f0567c57f6d5be04d56f8efbc9dc1b183981dad38387d750b53c17fcdd295cb68a874bf50f81d117cfe94bd3a8d9e08e1918644ae8daa3e5'
-        '4f00d6b875cd46dbaaeb63057fbec884fef729f8c910df831224efa018b559fc71d43afabb69f5790f5e0e7f0c067270d6497bbfbd7f868d182debe9faaafca7')
+        'SKIP'
+        'SKIP')
 export KBUILD_BUILD_HOST=archlinux
-export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_USER=supechicken
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
@@ -66,7 +69,7 @@ prepare() {
 
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux}" > localversion.20-pkgname
+  echo "-SupeChicken666" > localversion.20-pkgname
 
   local src
   for src in "${source[@]}"; do
@@ -184,6 +187,8 @@ _package() {
   install -vDm 644 LICENSES/deprecated/{GPL-1.0,ISC,Linux-OpenIB,X11,Zlib} -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 644 LICENSES/preferred/{BSD,MIT}* -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 644 LICENSES/exceptions/* -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  install -vDm 400 certs/signing_key.* -t "$pkgdir/var/lib/dkms/"
 }
 
 _package-headers() {
