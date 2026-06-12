@@ -47,6 +47,7 @@ source=(
   0001-add-sysctl-to-allow-disabling-unprivileged-CLONE_NEW.patch
   0002-drm-amdgpu-avoid-memory-allocation-in-the-critical-c.patch
   0003-drm-amdgpu-use-GFP_ATOMIC-instead-of-NOWAIT-in-the-c.patch
+  0004-tcp_bbr-v3-update-TCP-bbr-congestion-control-module-.patch
 )
 source_x86_64=(config.x86_64)
 validpgpkeys=(
@@ -55,20 +56,23 @@ validpgpkeys=(
 )
 sha256sums=('3c2f44ef6acc021a7ad444d9a2e6ec1ef488ff09368793d0004a6080f69d621e'
             'SKIP'
-            'fc4525901142589d4bf7d2b8d1bc474647bff879e610147cd3498eca935a2289'
-            'a5497e9e0a47a581cf7d259419b1ede98096512d2e671222caf59a06816c9167'
-            '44caa7c6a79055539f16ab118bece58934cdf93557643a50017634366c864b91')
-sha256sums_x86_64=('5375afdcb5d2749f1835b360561125f4d8b62617326dec493cea7d69b55254e4')
-b2sums=('46c65f2c9607e2d90250dd35223385455d98a262719c3b12bd55d256e15d4debf7c065d728c84800ffa6699b3ce45ce9d52a2d5cc739cbaea42ee4fd58bbbb7b'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
+sha256sums_x86_64=('SKIP')
+b2sums=('SKIP'
         'SKIP'
-        '6da4d826e1f432b6fc148adbb636e338bfef4e51233c2fc78446666cd322b66b4846377524ede92dcea376b29359a2ecd2f9900f509c696fc5cd6efcc90363cd'
-        'bef18d34c0864787aa372db1a3d179a527741e1a86501918badba436555cdb38762a51cc6398230a7534bda276693792a2224f68a045dcdb6bdea63a96edc41b'
-        'a612d5ea58485eeaa5cce0b30074ab3188f4321c4759448780de2f3f656821356d640df433e31bd4e8f2c9719c8e275374ddea29b9504335ed0981be5ac7bf7b')
-b2sums_x86_64=('794d81dc9a8210e496fa6de426cbfdb1ff69cac4d62ebc70133b9d4f4a0c1b2b23553e793eb79800c56fd11addb9e12ec6c31ecb1dd51f3b9ad133f58ded2406')
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
+b2sums_x86_64=('SKIP')
+
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 
 export KBUILD_BUILD_HOST=archlinux
-export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_USER=supechicken
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
@@ -76,7 +80,7 @@ prepare() {
 
   echo "Setting version..."
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux}" > localversion.20-pkgname
+  echo "-SupeChicken666" > localversion.20-pkgname
 
   local src
   for src in "${source[@]}"; do
@@ -197,6 +201,8 @@ _package() {
   install -vDm 644 LICENSES/deprecated/{GPL-1.0,ISC,Linux-OpenIB,X11,Zlib} -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 644 LICENSES/preferred/{BSD,MIT}* -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 644 LICENSES/exceptions/* -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  install -vDm 400 certs/signing_key.* -t "$pkgdir/var/lib/dkms/"
 }
 
 _package-headers() {
